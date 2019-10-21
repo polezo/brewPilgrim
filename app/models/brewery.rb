@@ -1,5 +1,7 @@
 class Brewery < ApplicationRecord
     has_many :brewqueues
+    has_many :brewery_tags
+    has_many :tags, through: :brewery_tags
 
     def maps_address
         if self.city && self.state
