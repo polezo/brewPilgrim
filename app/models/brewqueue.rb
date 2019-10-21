@@ -1,0 +1,2 @@
+class Brewqueue < ApplicationRecord
+end

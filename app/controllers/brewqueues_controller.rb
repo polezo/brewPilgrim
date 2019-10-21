@@ -1,0 +1,2 @@
+class BrewqueuesController < ApplicationController
+end

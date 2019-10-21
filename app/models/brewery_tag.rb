@@ -1,0 +1,2 @@
+class BreweryTag < ApplicationRecord
+end
