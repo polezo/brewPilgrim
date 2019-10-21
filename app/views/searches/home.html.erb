@@ -8,7 +8,7 @@
 <% if params[:search] %>
 <h1><%= params[:search].capitalize %>:</h1>
 <% @breweries.each do |brewery| %>
-<div class="search-result"><h2><%= brewery["name"] %> </h2>
+<div class="search-result"><h2><%= link_to brewery["name"], brewery_path(brewery["id"]) %> </h2>
 <ul>
     <li class="search_type">Type: <%= brewery["brewery_type"] %></li>
     <li class="search_address">Address: <%= brewery["street"] + " " + brewery["postal_code"] %></li>
