@@ -6,14 +6,16 @@
   <% end %>
 
 <% if params[:search] %>
-<h1><%= params[:search].capitalize %>:</h1>
+<h1><%= params[:search].titleize %>:</h1>
 <% @breweries.each do |brewery| %>
-<div class="search-result"><h2><%= link_to brewery["name"], brewery_path(brewery["id"]) %> </h2>
+<div class="search-result"><h2><%= link_to brewery.name, brewery_path(brewery) %> </h2>
 <ul>
-    <li class="search_type">Type: <%= brewery["brewery_type"] %></li>
-    <li class="search_address">Address: <%= brewery["street"] + " " + brewery["postal_code"] %></li>
-    <% unless brewery["website_url"].empty? %>
-    <li class="search_website">Website: <%= link_to brewery["website_url"], brewery["website_url"] %></li>
+    <li class="search_type">Type: <%= brewery.brewery_type %></li>
+    <% unless brewery.street.empty? || brewery.state.empty? || brewery.city.empty? || brewery.zip_code.empty? %>
+    <li class="search_address">Address: <%= link_to brewery.addy, brewery.maps_address %></li>
+    <% end %>
+    <% unless brewery.website_url.empty? %>
+    <li class="search_website">Website: <%= link_to brewery.website_url, brewery.website_url %></li>
     <% end %>
 </ul>
 </div>
