@@ -1,0 +1,21 @@
+<h1>BrewPilgrim</h1>
+<h3>Plan your pilgramage to the best taps on the map</h3>
+<%= form_tag(home_path, method: "get") do %>
+  <%= text_field_tag(:search, params[:search], placeholder: 'Enter a City for Breweries Near You') %>
+  <%= submit_tag "Find Brew" %>
+  <% end %>
+
+<% if params[:search] %>
+<h1><%= params[:search].capitalize %>:</h1>
+<% @breweries.each do |brewery| %>
+<div class="search-result"><h2><%= brewery["name"] %> </h2>
+<ul>
+    <li class="search_type">Type: <%= brewery["brewery_type"] %></li>
+    <li class="search_address">Address: <%= brewery["street"] + " " + brewery["postal_code"] %></li>
+    <% unless brewery["website_url"].empty? %>
+    <li class="search_website">Website: <%= link_to brewery["website_url"], brewery["website_url"] %></li>
+    <% end %>
+</ul>
+</div>
+<% end %>
+<% end %>
