@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_173340) do
     t.string "city"
     t.string "state"
     t.string "bio"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
