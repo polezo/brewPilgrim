@@ -1,0 +1,19 @@
+<h1>Brewery Details </h1>
+
+<div>Name: <%= @brewery["name"] %></div>
+<div>Type: <%= @brewery["brewery_type"] %></div>
+<div>Street: <%= @brewery["street"] %></div>
+<div>City: <%= @brewery["city"] %></div>
+<div>State: <%= @brewery["state"] %></div>
+<div>Postal Code: <%= @brewery["postal_code"] %></div>
+<div>Country: <%= @brewery["country"] %></div>
+<div>Phone: <%= @brewery["phone"] %></div>
+<div>Url: <%= @brewery["website_url"] %></div>
+<div>
+    <% @brewery["tag_list"].each do |tag| %>
+        <p><%= tag %></p>
+    <% end %>
+</div>
+
+
+
