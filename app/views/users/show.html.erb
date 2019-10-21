@@ -1,0 +1,7 @@
+<h1>This is the Show Page</h1>
+
+<h2>Detials for User: <%= @user.username %></h2>
+
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
