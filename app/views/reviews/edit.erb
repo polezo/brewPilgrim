@@ -1,0 +1,4 @@
+<h1><%= "Edit your review for #{@review.reviewee.name}: "%></h1>
+
+<%= render partial: "shared/review_form", locals: {user: current_user, brewery: @review.reviewee } %>
+

@@ -21,18 +21,11 @@
             </ul>
             <%= "Thanks for reviewing #{@brewery.name}!" %>
             <br>
-            <%= link_to "Edit or Delete Your Review", edit_review_path(@user_review) %>
+            
+            <%= link_to "Edit or Delete Your Review", edit_review_path(@user_review.id) %>
     <% else %>
             <div><strong>Review this Brewery:</strong><br>
-            <%= form_for @review do |f| %>
-                <div><%= f.label :rating %>
-                <%= f.select :rating, (1..5) %></div>
-                <div><%= f.label :content %>
-                <%= f.text_area :content %></div>
-                <%= f.hidden_field(:reviewer_id, value: current_user.id) %>
-                <%= f.hidden_field(:reviewee_id, value: @brewery.id) %>
-                <%= f.submit %>
-            <% end %>
+                <%= render partial: "shared/review_form", locals: {user: current_user, brewery: @brewery } %>
             </div>
     <% end %>
 <% end %>

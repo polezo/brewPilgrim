@@ -1,0 +1,16 @@
+<%= form_for @review do |f| %>
+<div><%= f.label :rating %>
+<%= f.select :rating, (1..5) %></div>
+<div><%= f.label :content %>
+<%= f.text_area :content %></div>
+<%= f.hidden_field(:reviewer_id, value: user.id) %>
+<%= f.hidden_field(:reviewee_id, value: brewery.id) %>
+<%= f.submit %>
+<% end %>
+<div>
+<% if @review.content %>
+<%= form_tag review_path, method: "DELETE" do %>
+    <%= submit_tag "Delete Review" %>
+    <% end %>
+    <% end %>
+</div>
