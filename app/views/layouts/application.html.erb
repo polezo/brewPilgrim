@@ -26,7 +26,10 @@
           </li>
 
           <!-- if user is logged in will show hello text and logout link -->
-          <% if session[:user_id] %>
+          <% if current_user %>
+          <li>
+            <%= link_to current_user.print_name, profile_path, class: "nav-link"%>
+          </li>
 
           <li class="nav-item">
               <%= link_to "Log Out",({controller: 'sessions', action: 'destroy', method: 'post'}), method: "POST", class: "nav-link" %>

@@ -14,7 +14,7 @@ class User < ApplicationRecord
     has_secure_password
 
     def print_name
-        User.find(session[:user_id]).username
+        self.username
     end
 
 
