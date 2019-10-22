@@ -13,4 +13,9 @@ class User < ApplicationRecord
     validates :bio, presence: true
     has_secure_password
 
+    def print_name
+        User.find(session[:user_id]).username
+    end
+
+
 end
