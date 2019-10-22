@@ -17,22 +17,28 @@
   <body>
     <!-- navbar for all pages  -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a href="#" class="navbar-brand"><i class="fas fa-beer"></i>BrewQueue</a>
+      <a href="/" class="navbar-brand"><i class="fas fa-beer"></i>BrewQueue</a>
 
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li>
-            <a href="#" class="nav-link">Search</a>
+            <a href="/" class="nav-link">Search</a>
           </li>
+
+          <!-- if user is logged in will show hello text and logout link -->
+          <% if session[:user_id] %>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">Login</a>
+              <%= link_to "Log Out",({controller: 'sessions', action: 'destroy', method: 'post'}), method: "POST", class: "nav-link" %>
           </li>
+
+          <% else %>
 
           <li class="nav-item">
-              <a href="#" class="nav-link">Logout</a>
+            <a href="/login" class="nav-link">Login</a>
           </li>
 
+          <% end %>
         </ul>
       </div>
     </nav>
