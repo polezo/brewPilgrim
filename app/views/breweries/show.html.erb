@@ -2,16 +2,27 @@
 
 <div>Name: <%= @brewery.name %></div>
 <div>Type: <%= @brewery.brewery_type %></div>
-<div>Street: <%= @brewery.street %></div>
-<div>City: <%= @brewery.city %></div>
-<div>State: <%= @brewery.state %></div>
-<div>Postal Code: <%= @brewery.zip_code %></div>
-<div>Country: <%= @brewery.country %></div>
+<div>Address: <%= link_to @brewery.addy, @brewery.maps_address %>
 <div>Phone: <%= @brewery.phone %></div>
 <div>Url: <%= link_to @brewery.website_url, @brewery.website_url %></div>
 <div>
     <% @brewery.tags.each do |tag| %>
         <p><%= tag %></p>
+    <% end %>
+</div>
+<br>
+
+<% if @brewery.reviews.length > 0 %>
+<h2>Reviews:</h2>
+<div><% @brewery.reviews.each do |review| %>
+    <p><strong>Review By: </strong> <%= link_to review.reviewer.username, user_path(review.reviewer) %></p>
+    <ul>
+        <li><%= pluralize(review.rating,'Star') %> </li>
+        <li><%= review.content %></li>
+    </ul>
+    <% end %>
+    <% else %>  
+    <div>No one has reviewed this brewery yet. Be the first!</div>
     <% end %>
 </div>
 

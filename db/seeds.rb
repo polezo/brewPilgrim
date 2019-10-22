@@ -43,4 +43,9 @@
 #     end
 # end
 
+adam = User.last
+brew = Brewery.first
 
+bq = Brewqueue.create(user: adam, brewery: brew)
+
+rev = Review.create(content:"this is a tasty brew",rating:5,reviewer: adam, reviewee: brew)
