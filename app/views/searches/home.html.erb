@@ -1,25 +1,39 @@
-<h1>BrewPilgrim</h1>
-<h3>Plan your pilgramage to the best taps on the map</h3>
-<%= form_tag(home_path, method: "get") do %>
-  <%= text_field_tag(:search, params[:search], placeholder: 'Enter a City for Breweries Near You') %>
-  <%= submit_tag "Find Brew" %>
-  <% end %>
+<div id="home">
+  <div class="landing-text">
+    <h1 id="landing-header-main">BrewQueue</h1>
+    <h3 class="lead">Plan your pilgramage to the best taps on the map</h3>
 
-<% if params[:search] %>
-<h1><%= params[:search].titleize %>:</h1>
-<% @breweries.each do |brewery| %>
-<div class="search-result"><h2><%= link_to brewery.name, brewery_path(brewery) %> </h2>
-<ul>
-    <li class="search_type">Type: <%= brewery.brewery_type %></li>
-    <% unless brewery.street.empty? || brewery.state.empty? || brewery.city.empty? || brewery.zip_code.empty? %>
-    <li class="search_address">Address: <%= link_to brewery.addy, brewery.maps_address %></li>
-    <% end %>
-    <% unless brewery.website_url.empty? %>
-    <li class="search_website">Website: <%= link_to brewery.website_url, brewery.website_url %></li>
-    <% end %>
-</ul>
+    <%= form_tag(home_path, method: "get", class: 'form-group') do %>
+      <%= text_field_tag(:search, params[:search], placeholder: 'Enter a City for Breweries Near You', class: 'search-input') %>
+      <%= submit_tag "Find Brew", class: 'btn btn-primary'%>
+      <% end %>
+  </div> 
 </div>
 
-<% byebug %>
-<% end %>
-<% end %>
+<div class="results-container">
+    <!-- Header which is the City -->
+    <% if params[:search] %>
+    <h1><%= params[:search].titleize %>:</h1>
+    <% @breweries.each do |brewery| %>
+
+    <!-- all the bar results -->
+    <div class="card">
+      <div class="search-result"><h2><%= link_to brewery.name, brewery_path(brewery) %> </h2>
+      <ul>
+          <li class="search_type">Type: <%= brewery.brewery_type %></li>
+          <% unless brewery.street.empty? || brewery.state.empty? || brewery.city.empty? || brewery.zip_code.empty? %>
+          <li class="search_address">Address: <%= link_to brewery.addy, brewery.maps_address %></li>
+          <% end %>
+          <% unless brewery.website_url.empty? %>
+          <li class="search_website">Website: <%= link_to brewery.website_url, brewery.website_url %></li>
+          <% end %>
+
+          <!-- Add to queue button only showing when logged in, can be changed to link_to erb tags  -->
+          <a id="add-to-queue-btn" class="btn btn-success" href="#" role="button">Add To Queue</a>
+      </ul>
+      </div>
+  <% end %>
+  <% end %>
+    </div>
+
+</div>
