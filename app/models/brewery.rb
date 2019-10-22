@@ -3,7 +3,7 @@ class Brewery < ApplicationRecord
     has_many :brewery_tags
     has_many :tags, through: :brewery_tags
 
-    has_many :reviews, foreign_key: reviewee_id
+    has_many :reviews, foreign_key: :reviewee_id
     has_many :reviewers, through: :reviews, source: :reviewer
 
     has_many :brewques
