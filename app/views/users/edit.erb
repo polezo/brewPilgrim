@@ -2,9 +2,9 @@
 
 <p style="color: red;">Edit Not working Yet</p>
 
-<%= form_for @profile, controller: 'users', action: 'update' do |f| %>
+<%= form_for @user do |f| %>
     <%= f.label :username %>
-    <%= f.password_field :username %>
+    <%= f.text_field :username %>
     <%= f.label :password %>
     <%= f.password_field :password %>
     <%= f.label :password_confirmation, "Password Confirmation" %>

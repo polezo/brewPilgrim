@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
      def show #will be for user even without session
 
-      # @user = User.find(params[:id])
+      @user = User.find(params[:id])
      end
 
      def new
@@ -16,14 +16,14 @@ class UsersController < ApplicationController
      def profile #will show the profile details 
      end
 
-     def edit_profile #show edit form and get the new values
-      @profile = User.find(current_user.id)
+     def edit #show edit form and get the new values
+      @user = User.find(current_user.id)
      end
 
      def update
-      @profile = User.find(params[:id])
-      @profile.update(user_params)
-      
+      @user = User.find(params[:id])
+      @user.update(user_params)
+      redirect_to user_path(@user)
      end
 
      def create

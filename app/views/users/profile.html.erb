@@ -13,7 +13,7 @@
 
 
 <button>
-  <%= link_to "Edit Profile", edit_profile_path %>
+  <%= link_to "Edit Profile", edit_user_path(current_user) %>
 </button>
 
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>

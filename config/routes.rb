@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
 #Show and Edit Profile
 get '/profile', to: 'users#profile', as: 'profile'
-get '/profile/edit', to: 'users#edit_profile', as: 'edit_profile'
+# get '/profile/edit', to: 'users#edit_profile', as: 'edit_profile'
 
 get '/', to: 'searches#home', as: 'home'
 # get '/results:q', to: 'searches#results'
