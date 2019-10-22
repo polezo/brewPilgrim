@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-#when logged in will give the user their show page
+#Show and Edit Profile
 get '/profile', to: 'users#profile', as: 'profile'
+get '/profile/edit', to: 'users#edit_profile', as: 'edit_profile'
 
 get '/', to: 'searches#home', as: 'home'
 # get '/results:q', to: 'searches#results'

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-      before_action :require_logged_in
+      before_action :require_logged_in, except: [:index, :new, :create]
 
      def index
      end
@@ -9,12 +9,21 @@ class UsersController < ApplicationController
       # @user = User.find(params[:id])
      end
 
-     def profile
-         @my_profile = User.find(session[:user_id])
+     def new
+      @user = User.new
      end
 
-     
-     def new
+     def profile #will show the profile details 
+     end
+
+     def edit_profile #show edit form and get the new values
+      @profile = User.find(current_user.id)
+     end
+
+     def update
+      @profile = User.find(params[:id])
+      @profile.update(user_params)
+      
      end
 
      def create
