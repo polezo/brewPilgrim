@@ -1,10 +1,8 @@
-<h1>Brewery Details </h1>
-
-<div>Name: <%= @brewery.name %></div>
-<div>Type: <%= @brewery.brewery_type %></div>
-<div>Address: <%= link_to @brewery.addy, @brewery.maps_address %>
-<div>Phone: <%= @brewery.phone %></div>
-<div>Url: <%= link_to @brewery.website_url, @brewery.website_url %></div>
+<h1><%= @brewery.name %></h1>
+<div><strong>Type: </strong><%= @brewery.brewery_type %></div>
+<div><strong>Address:</strong> <%= link_to @brewery.addy, @brewery.maps_address %>
+<div><strong>Phone:</strong> <%= @brewery.phone %></div>
+<div><strong>Url:</strong> <%= link_to @brewery.website_url, @brewery.website_url %></div>
 <div>
     <% @brewery.tags.each do |tag| %>
         <p><%= tag %></p>
@@ -12,8 +10,36 @@
 </div>
 <br>
 
+<% if !current_user %>
+    <button><%= link_to "Login to Review", login_path %></button>
+<% else %>
+    <% if @user_review %>
+        <p><strong>Your Review: </strong> 
+            <ul>
+            <li><%= pluralize(@user_review.rating,'Star') %> </li>
+            <li><%= @user_review.content %></li>
+            </ul>
+            <%= "Thanks for reviewing #{@brewery.name}!" %>
+            <br>
+            <%= link_to "Edit or Delete Your Review", edit_review_path(@user_review) %>
+    <% else %>
+            <div><strong>Review this Brewery:</strong><br>
+            <%= form_for @review do |f| %>
+                <div><%= f.label :rating %>
+                <%= f.select :rating, (1..5) %></div>
+                <div><%= f.label :content %>
+                <%= f.text_area :content %></div>
+                <%= f.hidden_field(:reviewer_id, value: current_user.id) %>
+                <%= f.hidden_field(:reviewee_id, value: @brewery.id) %>
+                <%= f.submit %>
+            <% end %>
+            </div>
+    <% end %>
+<% end %>
+
+<br>
 <% if @brewery.reviews.length > 0 %>
-<h2>Reviews:</h2>
+<h3>All Reviews:</h3>
 <div><% @brewery.reviews.each do |review| %>
     <p><strong>Review By: </strong> <%= link_to review.reviewer.username, user_path(review.reviewer) %></p>
     <ul>
@@ -25,6 +51,3 @@
     <div>No one has reviewed this brewery yet. Be the first!</div>
     <% end %>
 </div>
-
-
-
