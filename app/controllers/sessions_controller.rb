@@ -12,9 +12,11 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
 
         @user = user
-
-        
+        if cookies[:last_visited]
+            redirect_to brewery_path(cookies[:last_visited])
+        else
         redirect_to profile_path(@user)
+        end
     end
 
     def destroy 

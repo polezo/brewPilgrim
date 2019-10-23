@@ -1,7 +1,7 @@
 <h1><%= @brewery.name %></h1>
-<div><strong>Type: </strong><%= @brewery.brewery_type %></div>
+<div><strong>Type: </strong><%= @brewery.brewery_type.titleize %></div>
 <div><strong>Address:</strong> <%= link_to @brewery.addy, @brewery.maps_address %>
-<div><strong>Phone:</strong> <%= @brewery.phone %></div>
+<div><strong>Phone:</strong> <%= @brewery.phone_number %></div>
 <div><strong>Url:</strong> <%= link_to @brewery.website_url, @brewery.website_url %></div>
 <div>
     <% @brewery.tags.each do |tag| %>
@@ -11,8 +11,14 @@
 <br>
 
 <% if !current_user %>
-    <button><%= link_to "Login to Review", login_path %></button>
+    <button><%= link_to "Login to Review or Save to BrewQueue", login_path %></button>
 <% else %>
+    <% if !current_user.breweries.include?(@brewery) %>
+    <% @brewqueue = Brewqueue.new %>
+    <%= render partial: "shared/brewqueue_form", locals: {user: current_user, brewery: @brewery } %>
+    <% else %>
+    <p><strong>This Brewery is on Your BrewQueue!</strong></p>
+    <% end %>
     <% if @user_review %>
         <p><strong>Your Review: </strong> 
             <ul>

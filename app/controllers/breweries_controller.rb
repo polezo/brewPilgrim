@@ -7,6 +7,7 @@ class BreweriesController < ApplicationController
         else
             @review = Review.new
         end
-       end
+        end
+       cookies[:last_visited] = @brewery.id
     end
 end
