@@ -43,9 +43,12 @@
 #     end
 # end
 
-adam = User.last
-brew = Brewery.first
+Tag.find_or_create_by(name: "kid friendly", description: "These breweries don't get to crazy and have a friendly atmosphere that's suitable for kids.")
+Tag.find_or_create_by(name: "dog friendly", description:"These breweries don't mind you bringing your furry friend along with you.")
+Tag.find_or_create_by(name: "has food", description: "These breweries are good for more than just brew, and also have a food menu")
+Tag.find_or_create_by(name: "hard to find", description: "These breweries are either a bit of the travelled path, away from public transportation, or otherwis a bit tricky to reach.")
+Tag.find_or_create_by(name: "closing?/closed?", description: "These breweries have been marked as potentially closed or closing, and may be removed from the database soon.")
 
-bq = Brewqueue.create(user: adam, brewery: brew)
 
-rev = Review.create(content:"this is a tasty brew",rating:5,reviewer: adam, reviewee: brew)
+tag = find_by(name: patio)
+tag.update (name: "patio", description: "These breweries have a nice area for outdoor seating.")
