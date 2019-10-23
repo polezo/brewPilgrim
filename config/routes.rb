@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :brewqueues
-  resources :breweries
+  resources :reviews, only: [:create, :edit, :update, :destroy]
+  resources :brewqueues, only: [:create,:destroy, :show]
+  resources :breweries, only: [:show]
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

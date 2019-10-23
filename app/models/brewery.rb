@@ -62,4 +62,14 @@ class Brewery < ApplicationRecord
         number
     end
 
+    def average_rating
+        self.reviews.reduce(0) { |sum,review| sum + review.rating }/reviews.length.to_f
+    end
+
+    def num_of_brewqueues
+        self.brewqueues.length
+    end
+
+
+
 end

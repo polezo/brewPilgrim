@@ -1,9 +1,16 @@
-<h1>Reviewer : <%= @reviewer.username %></h1>
+<div id="overall-profile-container">
+<div id="profile-header">
+<h1> <%= @reviewer.username %></h1>
+</div>
 
-<div>City: <%= @reviewer.city %></div>
-<div>State: <%= @reviewer.state %></div>
-<div>Email: <%= @reviewer.email %></div>
-<div>Bio: <%= @reviewer.bio %></div>
+
+<div id="profile-container" class="card">
+    <i id="profile-icon" class="far fa-user fa-7x"></i>
+    <div class="card-body">
+<p class="class-text">City: <%= @reviewer.city %></p>
+<p class="class-text">State: <%= @reviewer.state %></p>
+<p class="class-text">Email: <%= @reviewer.email %></p>
+<p class="card-text">Bio: <%= @reviewer.bio %></p>
 
 
 <h2>All Reviews</h2>
@@ -13,3 +20,5 @@
   <div>Review: <%= review.content %></div>
   <div>Rating: <%= review.rating %></div>
 <% end %>
+    </div>
+    </div>

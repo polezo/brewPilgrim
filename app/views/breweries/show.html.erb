@@ -6,7 +6,18 @@
 <div><strong>Address:</strong> <%= link_to @brewery.addy, @brewery.maps_address %>
 <div><strong>Phone:</strong> <%= @brewery.phone_number %></div>
 <div><strong>Url:</strong> <%= link_to @brewery.website_url, @brewery.website_url %></div>
+<div><% if @brewery.reviews.length > 0 %>
+    <strong>Average Rating: </strong><%= pluralize(@brewery.average_rating,'Star') %>
+    <% end %></div>
 <div>
+<div>
+    <strong>Number of times added to BrewQueue: </strong>
+    <% if @brewery.num_of_brewqueues == 0 %>
+    No one has added this brewery to their brewqueue yet.
+    <% else %>
+    <%= @brewery.num_of_brewqueues %>
+    <% end %>
+</div>
     <% @brewery.tags.each do |tag| %>
         <p><%= tag %></p>
     <% end %>
@@ -20,10 +31,9 @@
     <% @brewqueue = Brewqueue.new %>
     <%= render partial: "shared/brewqueue_form", locals: {user: current_user, brewery: @brewery } %>
     <% else %>
-    <p><strong>This Brewery is on Your BrewQueue!</strong></p>
-
-    
-
+    <p><strong><%= @brewery.name %> is on Your BrewQueue!</strong></p>
+    <button><%= link_to "Remove from BrewQueue", current_user.brewqueues.find_by(brewery:@brewery), method: "DELETE" %></button>
+    <br>
     <% end %>
     <br>
     <% if @user_review %>

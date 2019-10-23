@@ -129,3 +129,28 @@ $second_font : 'Roboto Slab', serif ;
     font-family: $second_font;
     text-shadow: 5px 5px 3px #2D333F;
 }
+
+$second_font : 'Roboto Slab', serif ;
+#overall-profile-container {
+    margin-top: 5%;
+}
+
+#profile-container {
+    text-align: center;
+    width: 23rem;
+}
+
+#profile-icon {
+    padding-top: 1rem;
+}
+
+#profile-header {
+ text-align: center;
+ font-family: $second-font;
+ padding-top: 2rem;
+}
+
+#profile-session-links a {
+    color: white;
+}
+
