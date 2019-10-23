@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
      def show #will be for user even without session
 
-      @user = User.find(params[:id])
+      @reviewer = User.find(params[:id])
      end
 
      def new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
      def update
       @user = User.find(params[:id])
       @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to profile_path
      end
 
      def create
