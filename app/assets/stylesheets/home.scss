@@ -3,6 +3,9 @@ html, body {
     width: 100%;
 }
 
+$primary_font : 'Fascinate Inline', cursive;
+$second_font : 'Roboto Slab', serif ;
+
 // navbar styling 
 
 .fa-beer:before {
@@ -10,7 +13,7 @@ html, body {
 }
 
 .navbar-brand {
-    font-family: 'Fascinate Inline', cursive;
+    font-family: $primary_font;
     letter-spacing: 2px;
 }
 
@@ -35,7 +38,7 @@ html, body {
 
 #landing-header-main {
     font-size: 4rem;
-    font-family: 'Fascinate Inline', cursive;
+    font-family: $primary_font;
     letter-spacing: 3px;
 }
 
@@ -49,8 +52,43 @@ html, body {
 
 
 // Search Results Styling 
+
 #add-to-queue-btn {
-    float: right;
-    position: relative;
-    left: -30%;
+    display: inline;
+}
+
+#search-results {
+    display: inline;
+}
+
+.card {
+    margin-bottom: 10px;
+    width: 60%;
+    margin: 10px auto;
+    box-shadow: inset 0 0 7px #000000;
+}
+
+.card a {
+    text-decoration: none !important;
+    color: black;
+}
+
+.results-container {
+    text-align: center;
+    color: black;
+}
+
+.search-links {
+    list-style-type: none;
+    padding: .5em;
+}
+
+#search_header {
+    font-family: $second_font;
+    font-size: 3em;
+}
+
+#brewery-name {
+    font-family: $second_font;
+    padding-top: .5em;
 }

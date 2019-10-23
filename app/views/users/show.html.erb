@@ -1,7 +1,15 @@
-<h1>This is the Show Page</h1>
+<h1>Reviewer : <%= @reviewer.username %></h1>
 
-<h2>Detials for User: <%= @user.username %></h2>
+<div>City: <%= @reviewer.city %></div>
+<div>State: <%= @reviewer.state %></div>
+<div>Email: <%= @reviewer.email %></div>
+<div>Bio: <%= @reviewer.bio %></div>
 
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
+
+<h2>All Reviews</h2>
+<div><% @reviewer.reviews.each do |review| %></div>
+
+  <div>Brewery: <%= review.reviewee.name %></div>
+  <div>Review: <%= review.content %></div>
+  <div>Rating: <%= review.rating %></div>
 <% end %>

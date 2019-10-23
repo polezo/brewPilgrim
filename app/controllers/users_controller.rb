@@ -4,9 +4,8 @@ class UsersController < ApplicationController
      def index
      end
 
-     def show #will be for user even without session
-
-      # @user = User.find(params[:id])
+     def show 
+      @reviewer = User.find(params[:id])
      end
 
      def new

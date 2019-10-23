@@ -14,19 +14,19 @@
 <div class="results-container">
     <!-- Header which is the City -->
     <% if params[:search] %>
-    <h1><%= params[:search].titleize %>:</h1>
+    <h1 id="search_header">Results For <%= params[:search].titleize %>:</h1>
     <% @breweries.each do |brewery| %>
 
     <!-- all the bar results -->
-    <div class="card">
-      <div class="search-result"><h2><%= link_to brewery.name, brewery_path(brewery) %> </h2>
+    <div class="container-each-search">
+      <div id="search-result" class="card"><h2 id="brewery-name"><%= link_to brewery.name, brewery_path(brewery) %> </h2>
       <ul>
-          <li class="search_type">Type: <%= brewery.brewery_type %></li>
+          <li class="search-links">Type: <%= brewery.brewery_type %></li>
           <% unless brewery.street.empty? || brewery.state.empty? || brewery.city.empty? || brewery.zip_code.empty? %>
-          <li class="search_address">Address: <%= link_to brewery.addy, brewery.maps_address %></li>
+          <li class="search-links">Address: <%= link_to brewery.addy, brewery.maps_address %></li>
           <% end %>
           <% unless brewery.website_url.empty? %>
-          <li class="search_website">Website: <%= link_to brewery.website_url, brewery.website_url %></li>
+          <li class="search-links">Website: <%= link_to brewery.website_url, brewery.website_url %></li>
           <% end %>
 
           <!-- Add to queue button only showing when logged in, can be changed to link_to erb tags  -->
