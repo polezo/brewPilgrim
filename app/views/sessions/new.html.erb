@@ -1,10 +1,20 @@
-<h1>New Session</h1>
+<div id="new-session-container">
+    <h1>New Session</h1>
 
-<%= form_for @user, url: login_path, method: :post do |f| %>
-<%= f.label :username %>
-<%= f.text_field :username %>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<%= f.submit 'log in' %>
-Or <%= link_to(controller: 'users', action: 'new') {'sign up'} %>
-<% end %>
+    <div id="new-session-form-container">
+        <%= form_for @user, url: login_path, method: :post do |f| %>
+        <div class="form-group">
+            <%= f.label :username %>
+            <%= f.text_field :username, class: "form-control" %>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+            <%= f.submit 'log in' %>
+            Or <%= link_to(controller: 'users', action: 'new') {'sign up'} %>
+        </div>
+    <% end %>  
+    </div>
+</div>
+
+
+
+
