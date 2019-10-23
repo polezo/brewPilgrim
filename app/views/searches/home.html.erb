@@ -12,29 +12,36 @@
   </div> 
 </div>
 
-<div class="results-container">
+<div class="results-container ">
     <!-- Header which is the City -->
     <% if params[:search] %>
-    <h1 id="search_header">Results For <%= params[:search].titleize %>:</h1>
-    <% @breweries.each do |brewery| %>
 
-    <!-- all the bar results -->
-    <div class="container-each-search">
-      <div id="search-result" class="card"><h2 id="brewery-name"><%= link_to brewery.name, brewery_path(brewery) %> </h2>
+    <% @breweries.each do |brewery| %>
+      <div id="search-result">
+        <h2 id="brewery-name"><%= link_to brewery.name, brewery_path(brewery) %></h2>
       <ul>
-          <li class="search-links">Type: <%= brewery.brewery_type.titleize %></li>
+          <li class="search-links">
+              <i class="fas fa-beer fa-2x"></i> <%= brewery.brewery_type.titleize %>
+          </li>
           <% unless brewery.street.empty? || brewery.state.empty? || brewery.city.empty? || brewery.zip_code.empty? %>
-          <li class="search-links">Address: <%= link_to brewery.addy, brewery.maps_address %></li>
+          <li class="search-links">
+              <i class="fas fa-map-marked-alt fa-2x" style="padding-right: 2%;"></i><%= link_to brewery.addy, brewery.maps_address %>
+          </li>
           <% end %>
           <% unless brewery.website_url.empty? %>
-          <li class="search-links">Website: <%= link_to brewery.website_url, brewery.website_url %></li>
+          <li class="search-links">
+            <i class="fas fa-mouse fa-2x" style="padding-right: 2%"></i> <%= link_to brewery.website_url, brewery.website_url %>
+          </li>
           <% end %>
 
           <!-- Add to queue button only showing when logged in, can be changed to link_to erb tags  -->
-          <a id="add-to-queue-btn" class="btn btn-success" href="#" role="button">Add To Queue</a>
+          <div id="search-results-buttons-container">
+            <a href="#" class="btn btn-secondary">More Info</a>
+            <a id="add-to-queue-btn" class="btn btn-success" href="#" role="button">Add</a>
+          </div>
       </ul>
       </div>
   <% end %>
   <% end %>
-    </div>
+  
 </div>
