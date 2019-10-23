@@ -22,7 +22,7 @@
     <div class="container-each-search">
       <div id="search-result" class="card"><h2 id="brewery-name"><%= link_to brewery.name, brewery_path(brewery) %> </h2>
       <ul>
-          <li class="search-links">Type: <%= brewery.brewery_type %></li>
+          <li class="search-links">Type: <%= brewery.brewery_type.titleize %></li>
           <% unless brewery.street.empty? || brewery.state.empty? || brewery.city.empty? || brewery.zip_code.empty? %>
           <li class="search-links">Address: <%= link_to brewery.addy, brewery.maps_address %></li>
           <% end %>

@@ -14,7 +14,7 @@
     </p>
   </div>
   <div id="profile-session-links" class="card-body">
-    <%= link_to "Edit Profile", edit_profile_path, class: "card-link btn btn-secondary" %>
+    <%= link_to "Edit Profile", edit_user_path(current_user), class: "card-link btn btn-secondary" %>
 
     <%= link_to "Log Out",({controller: 'sessions', action: 'destroy', method: 'post'}), method: "POST", 
     class: "card-link btn btn-danger" %>
