@@ -54,12 +54,46 @@ $second_font : 'Roboto Slab', serif ;
 
 // Search Results Styling 
 
-#add-to-queue-btn {
-    display: inline;
+// **CONTAINER FOR ALL RESULTS****
+.results-container {
+    color: black;
+}
+// ***CONTAINER FOR INDIVIDUAL RESULT***
+#search-result {
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 3px;
+    margin: 10px 22px;
+    height: 380px;
+    width: 30%;
+    float: left;
+    color: black;
 }
 
-#search-results {
-    display: inline;
+//STYLING FOR BUTTONS *****
+#search-results-buttons-container {
+    text-align: center;
+    position: relative;
+}
+
+#search-results-buttons-container a:first-child {
+    color: white !important;
+    position: absolute;
+    left: 20%;
+}
+
+#search-results-buttons-container a:nth-child(2) {
+    color: white !important;
+    position: absolute;
+    left: 50%;
+}
+
+#search-result a {
+    text-decoration: underline !important;
+    color: black;
+}
+
+#search-result:hover {
+    box-shadow: 10px 10px 10px grey;
 }
 
 .card {
@@ -67,16 +101,6 @@ $second_font : 'Roboto Slab', serif ;
     width: 60%;
     margin: 10px auto;
     box-shadow: inset 0 0 7px #000000;
-}
-
-.card a {
-    text-decoration: underline !important;
-    color: black;
-}
-
-.results-container {
-    text-align: center;
-    color: black;
 }
 
 .search-links {
@@ -92,4 +116,7 @@ $second_font : 'Roboto Slab', serif ;
 #brewery-name {
     font-family: $second_font;
     padding-top: .5em;
+    text-align: center;
 }
+
+
