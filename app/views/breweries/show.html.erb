@@ -1,3 +1,6 @@
+<br>
+<br>
+<br>
 <h1><%= @brewery.name %></h1>
 <div><strong>Type: </strong><%= @brewery.brewery_type.titleize %></div>
 <div><strong>Address:</strong> <%= link_to @brewery.addy, @brewery.maps_address %>
@@ -18,33 +21,48 @@
     <%= render partial: "shared/brewqueue_form", locals: {user: current_user, brewery: @brewery } %>
     <% else %>
     <p><strong>This Brewery is on Your BrewQueue!</strong></p>
+
+    
+
     <% end %>
+    <br>
     <% if @user_review %>
-        <p><strong>Your Review: </strong> 
-            <ul>
-            <li><%= pluralize(@user_review.rating,'Star') %> </li>
-            <li><%= @user_review.content %></li>
-            </ul>
-            <%= "Thanks for reviewing #{@brewery.name}!" %>
-            <br>
+        <h3>Your Review:</h3>
+            <p><strong><%= pluralize(@user_review.rating,'Star') %>:</strong>
+            <span class="rated_stars"><%= @user_review.stars %></span><span class="unrated_stars"><%= @user_review.grey_stars %></span></p>
+            <strong>Description:</strong>
+            <p><%= @user_review.content %></p>
+            <p><%= "Thanks for reviewing #{@brewery.name}!" %></p>
             
-            <%= link_to "Edit or Delete Your Review", edit_review_path(@user_review.id) %>
+            <button><%= link_to "Edit or Delete Your Review", edit_review_path(@user_review.id) %></button>
+            <br>
     <% else %>
             <div><strong>Review this Brewery:</strong><br>
                 <%= render partial: "shared/review_form", locals: {user: current_user, brewery: @brewery } %>
             </div>
+            <br>
     <% end %>
 <% end %>
 
 <br>
 <% if @brewery.reviews.length > 0 %>
-<h3>All Reviews:</h3>
-<div><% @brewery.reviews.each do |review| %>
-    <p><strong>Review By: </strong> <%= link_to review.reviewer.username, user_path(review.reviewer) %></p>
-    <ul>
-        <li><%= pluralize(review.rating,'Star') %> </li>
-        <li><%= review.content %></li>
-    </ul>
+<% if @user_review %>
+<h3>Other Reviews:</h3>
+<% else %>
+<h3> Reviews:</h3>
+<% end %>
+<% if @user_review && @brewery.reviews.length == 1 %>
+<h5><%="No one else has reviewed #{@brewery.name} yet!"%></h5>
+<% end %>
+<% @brewery.reviews.each do |review| %>
+    <% unless review == @user_review %>
+  <div><p><strong>Review By: </strong> <%= link_to review.reviewer.username, user_path(review.reviewer) %></p>
+    <p><strong><%= pluralize(review.rating,'Star') %>:</strong>
+        <span class="rated_stars"><%= review.stars %></span><span class="unrated_stars"><%= review.grey_stars %></span></p>
+        <strong>Description:</strong>
+        <p><%= review.content %></p>
+        <br>
+    <% end %>
     <% end %>
     <% else %>  
     <div>No one has reviewed this brewery yet. Be the first!</div>
