@@ -2,13 +2,80 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//new session styling 
-#new-session-container {
+$primary-font: 'Pattaya', sans-serif;
+$second_font : 'Roboto Slab', serif ;
+
+//new session styling for picture 
+#session-picture-container {
+    background: url(https://images.unsplash.com/photo-1545878587-bd777063c414?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) no-repeat center center fixed;
+    display: table;
+    position: relative;
+    width: 100%;
+    // background-attachment: cover;
+    height: 55vw;
+}
+
+#new-session-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+#new-session-header {
+    font-family: $second-font;
+}
+
+#new-session-lead {
+    width: 50%;
+    margin: 0 auto;
+    font-family: $second_font;
+}
+
+
+//new session form styling
+#new-session-form-container {
+    width: 70%;
+    margin: 0 auto;
+    vertical-align: middle;
+    padding-top: 30%;
+}
+
+#new-session-main-text {
+    font-family: $second-font;
     text-align: center;
 }
-#new-session-form-container {
-    width: 60%;
+
+//container for the links under the new session from
+
+#new-session-form-links-ctnr {
+    text-align: center;
+}
+
+
+// EDIT PROFILE STLYING ***********
+#edit-profile-container1 {
+    display: table;
+    position: relative;
+    height: 100%;
+    width: 55%;
     margin: 0 auto;
-    border: 1px solid grey;
-    border-radius: 5px;
+}
+
+#edit-profile-container2 {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#edit-profile-container2 h1 {
+    display: inline;
+    margin-left: 5%;
+}
+
+#edit-profile-container2 i {
+    display: inline;
+}
+
+#edit-text-container {
+    margin-bottom: 4%;
 }

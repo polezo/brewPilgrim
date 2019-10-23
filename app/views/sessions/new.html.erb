@@ -1,20 +1,30 @@
-<div id="new-session-container">
-    <h1>New Session</h1>
-
-    <div id="new-session-form-container">
-        <%= form_for @user, url: login_path, method: :post do |f| %>
-        <div class="form-group">
-            <%= f.label :username %>
-            <%= f.text_field :username, class: "form-control" %>
-            <%= f.label :password %>
-            <%= f.password_field :password, class: "form-control" %>
-            <%= f.submit 'log in' %>
-            Or <%= link_to(controller: 'users', action: 'new') {'sign up'} %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col new-session-from">
+            <div id="new-session-form-container">
+            <h1 id="new-session-main-text">Login</h1>
+            <%= form_for @user, url: login_path, method: :post do |f| %>
+                <div class="form-group">
+                    <%= f.label :username %>
+                    <%= f.text_field :username, class: "form-control" %>
+                    <%= f.label :password %>
+                    <%= f.password_field :password, class: "form-control" %> <br>
+                    <div id="new-session-form-links-ctnr">
+                    <%= f.submit 'Log in' , class: "btn btn-primary"%> 
+                    Or <%= link_to(controller: 'users', action: 'new') {'Sign up'} %>
+                    </div>
+                </div>
+            <% end %> 
+            </div>
         </div>
-    <% end %>  
+        <div class="col">
+            <div id="session-picture-container">
+                <div id="new-session-text">
+                    <h1 id="new-session-header">Login In to BrewQueue</h1>
+                    <h3 id="new-session-lead" class="lead">Once logged in you will be able to add reviews, rate, and add breweries to your queue!</h3>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
-
-
+        
