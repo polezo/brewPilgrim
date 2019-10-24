@@ -71,9 +71,16 @@ class Brewery < ApplicationRecord
     end
 
     def random_profile_img
-        random_image = rand(1..8)
         arr_of_images = ["bar-img-1.jpeg", "bar-img-2.jpeg", "bar-img-3.jpeg", "bar-img-4.jpeg", "bar-img-5.jpeg", "bar-img-6.jpeg", "bar-img-7.jpeg", "bar-img-8.jpeg", "bar-img-9.jpeg"]
 
-        arr_of_images[random_image]  
+        arr_of_images.sample(1)[0] 
+    end
+
+    def self.highest_rated
+        reviewed_breweries = Review.all.map do |review| review.reviewee if review.rating
+        end
+        rb = reviewed_breweries.uniq
+        best = rb.max_by { |brewery| brewery.average_rating }
+        best
     end
 end

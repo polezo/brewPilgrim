@@ -2,6 +2,9 @@ class Review < ApplicationRecord
     belongs_to :reviewer, class_name: "User", foreign_key: :reviewer_id
     belongs_to :reviewee, class_name: "Brewery", foreign_key: :reviewee_id
 
+    validates :content, presence: true
+    validates :rating, numericality: { greater_than: 0, less_than_or_equal_to: 5 }
+
     def stars
         if self.rating == 1
             starz = "★"
@@ -37,6 +40,12 @@ class Review < ApplicationRecord
         reviews.reduce(0) { |sum,review| sum + review.rating }/self.all.length.to_f
     end
 
-    
+    def self.longest_review
+        self.order("LENGTH(content) DESC").first
+    end
+
+    def self.total
+        self.all.length
+    end
 
 end

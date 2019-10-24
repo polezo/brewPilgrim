@@ -3,3 +3,51 @@
 <br>
 <h1>Stats:</h1>
 
+<div><strong>Average Review Score:</strong>
+<%= @average_review %>
+</div>
+<br>
+<div>
+        <strong>
+            Most prolific reviewer:
+        </strong>
+        <%= link_to @most_reviews.username, user_path(@most_reviews) %>
+    </div>
+<div><br>
+<strong>Longest Review:</strong>
+<%= Review.longest_review.content %> <strong> by </strong><%= link_to @longest_review.reviewer.username, user_path(@longest_review.reviewer) %>
+</div>
+<br>
+<div>
+    <strong>Total Reviews:</strong>
+<%= @total_reviews %>
+</div>
+
+<br>
+<div>
+    <strong>
+        Total Number of Breweries added to Brewques:
+    </strong>
+    <%= @total_breweries_on_brewqueue %>
+</div>
+<br>
+<div><strong>User with most Breweries on BrewQueue (alcoholic):</strong>
+    <%= link_to @alcoholic.username, user_path(@alcoholic) %>
+</div>
+<br>
+<div><strong>
+    Brewery with best average review:</strong>
+    <%=link_to @best_brewery.name, brewery_path(@best_brewery) %> with an average score of <strong><%= @best_brewery.average_rating %></strong>
+</div>
+<br>
+<div>
+    <strong>
+        Brewery added to most Brewqueues: 
+    </strong>
+    <%= link_to @most_bq_brewery.name, brewery_path(@most_bq_brewery) %>
+</div>
+
+
+
+
+

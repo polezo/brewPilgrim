@@ -3,7 +3,14 @@ class Brewqueue < ApplicationRecord
     belongs_to :user
 
     def self.total
-        self.all.length
+        uniq_breweries = self.all.uniq
+        uniq_breweries.length
+
+    end
+
+    def self.most_brewqueues
+        id = self.group(:brewery_id).order('brewery_id DESC').limit(1)
+        id[0]
     end
 
 end
