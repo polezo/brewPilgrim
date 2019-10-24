@@ -1,4 +1,4 @@
-<% cookies[:last_visited_home] = "home" %>
+<% cookies[:last_visited] = "home" %>
 <% if @search_style %>
 <div id="home_searched">
   <div class="landing-text-searched">
@@ -46,7 +46,7 @@
               <% if brewery.users.include?(current_user) %>
                 <p><strong>This brewery is on your Brewqueue!</strong></p>
               <% else %>
-                <%= check_box_tag 'brewqueue[]',brewery.id %>
+              <input type="checkbox" name="brewqueues[]" id="brewqueues_" value=<%="#{brewery.id}"%>>
                 <%= "Save brewery to BrewQueue" %>
               <% end %>
           <% end %>
