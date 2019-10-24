@@ -48,6 +48,7 @@ $second_font : 'Roboto Slab', serif ;
     vertical-align: middle;
     position: absolute;
     top: 10%;
+    color: black;
 }
 
 #user-profile-container {
@@ -74,7 +75,7 @@ $second_font : 'Roboto Slab', serif ;
     // border: 7px solid yellow;
     position: absolute;
     top: 10%;
-  
+    color: black;
 }
 
 //SHOW USER PAGE- BREWQUEUE ****
@@ -94,6 +95,9 @@ $second_font : 'Roboto Slab', serif ;
     vertical-align: middle;
     position: absolute;
     top: 10%;
+    color: black;
 }
 
-//COLUMN HEADERS
+.profile-col-headers {
+    color: black;
+}
