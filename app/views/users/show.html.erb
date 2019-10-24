@@ -29,9 +29,12 @@
             <ul class="list-group">
             <% @reviewer.reviews.each do |review| %>
               <li class="list-group-item">
-                <%= link_to review.reviewee.name, brewery_path(review.reviewee) %>
+                  <span class="rated_stars"><%= review.stars %></span><span class="unrated_stars"><%= review.grey_stars %> - </span><%= link_to review.reviewee.name, brewery_path(review.reviewee) %>
               -
               <%= review.content %></li>
+            
+              <br>
+              
             <% end %>
             </ul>
         </div>
@@ -52,6 +55,7 @@
               <%= brewqueue.brewery.city %>, 
               <%= brewqueue.brewery.state %>
                </li>
+               <br>
             <% end %>
             </ul>
         </div>

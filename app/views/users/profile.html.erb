@@ -1,3 +1,4 @@
+<% cookies[:last_visited] = "profile" %>
 <div id="user-show-background" class="container-fluid">
     <div id="profile-row" class="row">
       <div class="col">
@@ -35,9 +36,11 @@
               <ul class="list-group">
               <% current_user.reviews.each do |review| %>
                 <li class="list-group-item">
-                  <%= link_to review.reviewee.name, brewery_path(review.reviewee) %>
+                    <span class="rated_stars"><%= review.stars %></span><span class="unrated_stars"><%= review.grey_stars %> - </span><%= link_to review.reviewee.name, brewery_path(review.reviewee) %>
                 -
                 <%= review.content %></li>
+                <button id="edit_review_profile_button"><%=link_to "Edit or Delete this Review",edit_review_path(review)%></button>
+                <br>
               <% end %>
               </ul>
           </div>
@@ -58,6 +61,8 @@
                 <%= brewqueue.brewery.city %>, 
                 <%= brewqueue.brewery.state %>
                  </li>
+                 <button id="edit_review_profile_button"><%= link_to "Remove from BrewQueue", brewqueue, method: "DELETE" %></button>
+                 <br>
               <% end %>
               </ul>
           </div>

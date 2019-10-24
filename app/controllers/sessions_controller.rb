@@ -12,8 +12,15 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
 
         @user = user
-        if cookies[:last_visited]
+        
+        if /\A\d+\z/.match(cookies[:last_visited])
             redirect_to brewery_path(cookies[:last_visited])
+        elsif
+            cookies[:last_visited] == "home"
+            redirect_to home_path
+        elsif
+            cookies[:last_visited].include?("search")
+            redirect_to "#{cookies[:last_visited]}"
         else
         redirect_to profile_path(@user)
         end

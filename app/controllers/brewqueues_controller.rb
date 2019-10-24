@@ -17,10 +17,17 @@ class BrewqueuesController < ApplicationController
     end
 
     def destroy
+        if cookies[:last_visited] == "profile"
+            brewqu = Brewqueue.find(params[:id])
+            brewqu.destroy
+            redirect_to profile_path
+        else
+
         brewqu = Brewqueue.find(params[:id])
         brewery = brewqu.brewery
         brewqu.destroy
         redirect_to brewery_path(brewery)
+        end
     end
 
     private
