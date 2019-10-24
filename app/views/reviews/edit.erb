@@ -1,9 +1,7 @@
 <div id="review-form-container">
     <div id="review-form">
         <h1><%= "Edit your review for #{@review.reviewee.name}: "%></h1>
-        <form class="form-group">
-            <%= render partial: "shared/review_form", locals: {user: current_user, brewery: @review.reviewee } %>
-        </form>
+            <%= render partial: "shared/review_form", locals: {user: @review.reviewer, brewery: @review.reviewee } %>
     </div>
 </div>
 

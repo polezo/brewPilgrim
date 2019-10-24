@@ -39,10 +39,12 @@
                 <%= @brewery.num_of_brewqueues %>
                 <% end %>
             </div>
+            <% unless @brewery.tags.size == 0 %>
+                <strong>Tagged As:</strong>
             <ul>
-                <br>
                 <% @brewery.tags.each do |tag| %>
                     <li><%= tag.name.titleize %></li>
+                <% end %>
                 <% end %>
             </ul>
             </div> <br>
