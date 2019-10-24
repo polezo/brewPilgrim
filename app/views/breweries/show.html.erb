@@ -1,5 +1,5 @@
-<div id="brewery-show-page-container" class="container-fluid" style="border:10px solid black;">
-    <div class="row" style="border: 10px solid white;">
+<div id="brewery-show-page-container" class="container-fluid" style="border:10px solid white;">
+    <div class="row" style="border: 8px solid black; border-radius: 10px;">
         <div class="col-4" style="border: 10px solid white;">
             <img src="https://images.unsplash.com/photo-1531973819741-e27a5ae2cc7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt=""
             class="img-thumbnail">
@@ -44,9 +44,9 @@
                 <% @brewery.tags.each do |tag| %>
                     <p><%= tag %></p>
                 <% end %>
-            </div> <br>
-        </div>
+        </div> <br>
     </div>
+
 
     <div id="review-row" class="row" 
     style="border: 10px solid white">
@@ -63,7 +63,7 @@
             <p><strong><%= @brewery.name %> is on Your BrewQueue!</strong></p>
             <button><%= link_to "Remove from BrewQueue", current_user.brewqueues.find_by(brewery:@brewery), method: "DELETE" %></button>
             <br>
-            <% end %>
+            <% end %> <!--if/else-->
             <br>
             <% if @user_review %>
             <h3 class="form-group">Your Review:</h3>
@@ -80,9 +80,9 @@
                 <%= render partial: "shared/review_form", locals: {user: current_user, brewery: @brewery } %>
             </div>
             <br>
-            <% end %>
-            <% end %>
-
+            <% end %> <!--if/else-->
+            <% end %> <!-- if -->
+     
         </div>
 
 
@@ -95,11 +95,14 @@
                 <h3>Other Reviews:</h3>
             </div>
             <% else %>
-            <h3> Reviews:</h3>
-            <% end %>
+            <div id="brewery-all-reviews-header">
+                <i class="fas fa-edit fa-2x"></i>
+                <h3> Reviews:</h3>
+            </div>
+            <% end %> <!-- .if/else -->
             <% if @user_review && @brewery.reviews.length == 1 %>
            <h5><%="No one else has reviewed #{@brewery.name} yet!"%></h5>
-            <% end %>
+            <% end %> <!-- .if -->
             <% @brewery.reviews.each do |review| %>
             <% unless review == @user_review %>
 
@@ -107,14 +110,16 @@
             <p><strong><%= pluralize(review.rating,'Star') %>:</strong>
             <span class="rated_stars"><%= review.stars %></span><span class="unrated_stars"><%= review.grey_stars %></span></p>
             <strong>Description:</strong>
-            <p><%= review.content %></p>
+            <div><%= review.content %></div>
             <br>
-            <% end %>
-            <% end %>
-            <% else %>  
-        <div>No one has reviewed this brewery yet. Be the first!</div>
-            <% end %>
         </div>
+            <% end %> <!-- .unless -->
+            <% end %> <!-- .each -->
+            <% else %>  
+        <div >No one has reviewed this brewery yet. Be the first!</div>
+            <% end %>
 
+        </div>
+    
     </div>
 </div>
