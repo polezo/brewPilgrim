@@ -1,10 +1,9 @@
 class BrewqueuesController < ApplicationController
 
     def create
-        if cookies[:last_visited] == "home"
-            params[:brewqueues].each do |bq|
+        if cookies[:last_visited].include?("search")
+            params[:brewqueue].each do |bq|
                 new_bq = Brewqueue.new(brewery_id:bq,user:current_user)
-                byebug
                 new_bq.save
             end
             redirect_to profile_path(current_user)

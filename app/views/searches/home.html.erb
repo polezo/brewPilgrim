@@ -39,23 +39,53 @@
             <i class="fas fa-mouse fa-2x" style="padding-right: 2%"></i> <%= link_to brewery.website_url, brewery.website_url %>
           </li>
           <% end %>
-          <% if !current_user %>
+
+          <br>
+          <div id="search-results-buttons-container" class="row">
+            
+            <div id="home-more-info" class="col">
+              <%= link_to "More Info", brewery_path(brewery), class: "btn btn-secondary" %>
+            </div>
+
+            <div id="home-brewque" class="col">
+              <% if !current_user %>
               <p><%= link_to "Login to add this brewery to your BrewQueue", login_path %></p>
-          <% else %>
+              <% else %>
               <% if brewery.users.include?(current_user) %>
                 <p><strong>This brewery is on your Brewqueue!</strong></p>
               <% else %>
-              <input type="checkbox" name="brewqueues[]" id="brewqueues_" value=<%="#{brewery.id}"%>>
-                <%= "Save brewery to BrewQueue" %>
+              
+              <div class="my-page">
+                <div class="my-page-toggle">
+                  <label class="my-toggle" for="checkbox-label">
+                        <input class="toggle-input" type="checkbox" name="brewqueue[]" id="brewqueue_" value=<%="#{brewery.id}"%>>
+                        <span class="my-toggle-label">
+                          <span class="my-toggle-label-text">
+                              <%= "Save brewery to BrewQueue" %>
+                          </span>
+                        </span>
+                    </label>
+                </div>
+              </div>
+
+
+
+
+              <div class="page">
+                  <div class="page__toggle">
+                    <label class="toggle">
+                      <input class="toggle__input" type="checkbox" checked>
+                      <span class="toggle__label">
+                        <span class="toggle__text">Check Me!</span>
+                      </span>
+                    </label>
+                  </div>
+
+
               <% end %>
-          <% end %>
-          <!-- Add to queue button only showing when logged in, can be changed to link_to erb tags  -->
-          <br>
-          <div id="search-results-buttons-container">
-            
-            <%= link_to "More Info", brewery_path(brewery), class: "btn btn-secondary" %>
-            <!-- <a href="#" class="btn btn-secondary">More Info</a> -->
-            <!-- <a id="add-to-queue-btn" class="btn btn-success" href="#" role="button">Add</a> -->
+              <% end %>
+            </div>
+
           </div>
          <div>
                  

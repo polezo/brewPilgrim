@@ -1,8 +1,7 @@
 <div id="brewery-show-page-container" class="container-fluid" style="border:10px solid white;">
     <div class="row" style="border: 8px solid black; border-radius: 10px;">
         <div class="col-4" style="border: 10px solid white;">
-            <img src="https://images.unsplash.com/photo-1531973819741-e27a5ae2cc7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt=""
-            class="img-thumbnail">
+            <%= image_tag @brewery.random_profile_img || "bar-img-1", class: "img-thumbnail"%>
         </div>
         <div class="col-8" style="border: 10px solid white;">
             <h1><%= @brewery.name %></h1>
