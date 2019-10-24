@@ -70,7 +70,12 @@ class Brewery < ApplicationRecord
         self.brewqueues.length
     end
 
-    
-
+    def self.highest_rated
+        reviewed_breweries = Review.all.map do |review| review.reviewee if review.rating
+        end
+        rb = reviewed_breweries.uniq
+        best = rb.max_by { |brewery| brewery.average_rating }
+        best
+    end
 
 end

@@ -16,7 +16,13 @@ class User < ApplicationRecord
         self.username
     end
 
-    
+    def self.most_reviews
+        self.all.max_by { |user| user.reviews.length }
+    end
+
+    def self.most_brewqueues
+        self.all.max_by{|user| user.brewqueues.length}
+    end
 
 
 end
