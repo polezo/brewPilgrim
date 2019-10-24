@@ -1,5 +1,5 @@
 <%= form_for @brewqueue do |f| %>
 <%= f.hidden_field(:user_id, value: user.id) %>
 <%= f.hidden_field(:brewery_id, value: brewery.id) %>
-<%= f.submit "Add to BrewQueue" %>
+<%= f.submit "Add to BrewQueue", class: "btn btn-primary" %>
 <% end %>

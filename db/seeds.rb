@@ -52,3 +52,5 @@ Tag.find_or_create_by(name: "closing?/closed?", description: "These breweries ha
 
 tag = find_by(name: patio)
 tag.update (name: "patio", description: "These breweries have a nice area for outdoor seating.")
+
+
