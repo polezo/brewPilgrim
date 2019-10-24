@@ -16,5 +16,7 @@ class User < ApplicationRecord
         self.username
     end
 
+    
+
 
 end

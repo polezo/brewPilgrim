@@ -32,4 +32,11 @@ class Review < ApplicationRecord
         stary  
     end
 
+    def self.average_rating
+        reviews = self.all.select { |review| review.rating }
+        reviews.reduce(0) { |sum,review| sum + review.rating }/self.all.length.to_f
+    end
+
+    
+
 end

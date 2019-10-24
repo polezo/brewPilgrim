@@ -70,6 +70,7 @@ class Brewery < ApplicationRecord
         self.brewqueues.length
     end
 
+    
 
 
 end

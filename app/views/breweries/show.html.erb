@@ -34,16 +34,17 @@
             </div>
 
             <div>
+                <% unless @brewery.num_of_brewqueues == 0 %>
                 <strong>Number of times added to BrewQueue: </strong>
-                <% if @brewery.num_of_brewqueues == 0 %>
-                    No one has added this brewery to their brewqueue yet.
-                <% else %>
                 <%= @brewery.num_of_brewqueues %>
                 <% end %>
             </div>
+            <ul>
+                <br>
                 <% @brewery.tags.each do |tag| %>
-                    <p><%= tag %></p>
+                    <li><%= tag.name.titleize %></li>
                 <% end %>
+            </ul>
             </div> <br>
         </div>
     </div>
@@ -95,7 +96,10 @@
                 <h3>Other Reviews:</h3>
             </div>
             <% else %>
-            <h3> Reviews:</h3>
+            <div id="brewery-all-reviews-header">
+                    <i class="fas fa-edit fa-2x"></i>
+            <h3>Reviews:</h3>
+            </div>
             <% end %>
             <% if @user_review && @brewery.reviews.length == 1 %>
            <h5><%="No one else has reviewed #{@brewery.name} yet!"%></h5>

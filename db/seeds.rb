@@ -43,15 +43,33 @@
 #     end
 # end
 
-Tag.find_or_create_by(name: "kid friendly", description: "These breweries don't get to crazy and have a friendly atmosphere that's suitable for kids.")
-Tag.find_or_create_by(name: "dog friendly", description:"These breweries don't mind you bringing your furry friend along with you.")
-Tag.find_or_create_by(name: "has food", description: "These breweries are good for more than just brew, and also have a food menu")
-Tag.find_or_create_by(name: "hard to find", description: "These breweries are either a bit of the travelled path, away from public transportation, or otherwis a bit tricky to reach.")
-Tag.find_or_create_by(name: "closing?/closed?", description: "These breweries have been marked as potentially closed or closing, and may be removed from the database soon.")
+kid_friendly = Tag.find_or_create_by(name: "kid friendly", description: "These breweries don't get to crazy and have a friendly atmosphere that's suitable for kids.")
+dog_friendly = Tag.find_or_create_by(name: "dog friendly", description:"These breweries don't mind you bringing your furry friend along with you.")
+food = Tag.find_or_create_by(name: "has food", description: "These breweries are good for more than just brew, and also have a food menu")
+hard = Tag.find_or_create_by(name: "hard to find", description: "These breweries are either a bit of the travelled path, away from public transportation, or otherwis a bit tricky to reach.")
+closing = Tag.find_or_create_by(name: "closing?/closed?", description: "These breweries have been marked as potentially closed or closing, and may be removed from the database soon.")
+
+taggy = Tag.find_by(name: "patio")
+taggy.update(name: "patio", description: "These breweries have a nice area for outdoor seating.")
+
+BreweryTag.find_or_create_by(brewery_id: 1952, tag: kid_friendly)
+BreweryTag.find_or_create_by(brewery_id: 1952, tag: dog_friendly)
+BreweryTag.find_or_create_by(brewery_id: 1952, tag: taggy)
+
+BreweryTag.find_or_create_by(brewery_id:1954, tag:taggy)
+BreweryTag.find_or_create_by(brewery_id:1954, tag:kid_friendly)
+
+BreweryTag.find_or_create_by(brewery_id: 1963, tag: kid_friendly)
+BreweryTag.find_or_create_by(brewery_id: 1963, tag: food)
+
+BreweryTag.find_or_create_by(brewery_id: 131, tag: taggy)
+BreweryTag.find_or_create_by(brewery_id: 131, tag: dog_friendly)
+
+BreweryTag.find_or_create_by(brewery_id: 131, tag: taggy)
+BreweryTag.find_or_create_by(brewery_id: 131, tag: kid_friendly)
+
+BreweryTag.find_or_create_by(brewery_id: 1962, tag: food)
 
 
-
-tag = find_by(name: patio)
-tag.update (name: "patio", description: "These breweries have a nice area for outdoor seating.")
 
 

@@ -40,7 +40,7 @@
           </li>
           <% end %>
           <% if !current_user %>
-              <p>Login to add this brewery to your BrewQueue</p>
+              <p><%= link_to "Login to add this brewery to your BrewQueue", login_path %></p>
           <% else %>
               <% if brewery.users.include?(current_user) %>
                 <p><strong>This brewery is on your Brewqueue!</strong></p>
