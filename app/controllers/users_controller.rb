@@ -14,6 +14,7 @@ class UsersController < ApplicationController
      end
 
      def profile #will show the profile details 
+      @brewqueues = current_user.brewqueues.reverse
      end
 
      def edit #show edit form and get the new values
