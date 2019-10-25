@@ -1,7 +1,13 @@
-<div id="review-form-container">
+<div id="review-form-container" class="container">
     <div id="review-form">
-        <h1><%= "Edit your review for #{@review.reviewee.name}: "%></h1>
-            <%= render partial: "shared/review_form", locals: {user: @review.reviewer, brewery: @review.reviewee } %>
+        <div class="form-group">
+            <div class="profile-col-headers">
+                <i class="fab fa-stack-exchange fa-5x"></i>
+                <br>
+                <h2 id="show-user-header-username"><%= "Edit your review for #{@review.reviewee.name}: "%></h2>
+            </div>
+        <%= render partial: "shared/review_form", locals: {user: @review.reviewer, brewery: @review.reviewee } %>
+        </div>
     </div>
 </div>
 
