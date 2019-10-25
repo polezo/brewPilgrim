@@ -6,3 +6,4 @@ describe 'Route to view' do
       expect(page.status_code).to eq(200)
     end
 end
+
