@@ -54,34 +54,16 @@
               <% if brewery.users.include?(current_user) %>
                 <p><strong>This brewery is on your Brewqueue!</strong></p>
               <% else %>
+                <!-- edit this one  -->
+
               
-              <div class="my-page">
-                <div class="my-page-toggle">
-                  <label class="my-toggle" for="checkbox-label">
-                        <input class="toggle-input" type="checkbox" name="brewqueue[]" id="brewqueue_" value=<%="#{brewery.id}"%>>
-                        <span class="my-toggle-label">
-                          <span class="my-toggle-label-text">
-                              <%= "Save brewery to BrewQueue" %>
-                          </span>
-                        </span>
-                    </label>
-                </div>
-              </div>
-
-
-
-
-              <div class="page">
-                  <div class="page__toggle">
-                    <label class="toggle">
-                      <input class="toggle__input" type="checkbox" checked>
-                      <span class="toggle__label">
-                        <span class="toggle__text">Check Me!</span>
-                      </span>
-                    </label>
-                  </div>
-
-
+                <label class="checkbox-label">
+                  <input class="toggle-input" type="checkbox" name="brewqueue[]" id="brewqueue_" value=<%="#{brewery.id}"%>>
+                  <span class="label-text"
+                  style="float:left;">
+                    <%= "Add" %>
+                  </span>
+                </label>
               <% end %>
               <% end %>
             </div>
