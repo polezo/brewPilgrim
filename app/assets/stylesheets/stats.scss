@@ -1,0 +1,48 @@
+// Place all the styles related to the Tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$second_font : 'Roboto Slab', serif;
+
+#fan {
+    animation: spin 4s infinite linear;
+    font-size: 4rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+        color: #134074
+    }
+    50% {
+        color: #00A1FF;
+    }
+    100% {
+        transform: rotate(360deg);
+        color: #134074
+    }
+}
+
+#stats-container-outline {
+    display: table;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    font-family: $second_font;
+}
+
+.stats-container {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+#stats-header-container h1 {
+    display: inline;
+    margin-left: 1%;
+    font-size: 2.8rem;
+}
+
+#stats-header-container {
+   border: 10px solid white;
+}
