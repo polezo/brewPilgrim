@@ -26,7 +26,7 @@
 <br>
 <div>
     <strong>
-        Total Number of Breweries added to Brewques:
+        Total Number of Breweries added to BrewQueues:
     </strong>
     <%= @total_breweries_on_brewqueue %>
 </div>
@@ -42,7 +42,7 @@
 <br>
 <div>
     <strong>
-        Brewery added to most Brewqueues: 
+        Brewery added to most BrewQueues: 
     </strong>
     <%= link_to @most_bq_brewery.name, brewery_path(@most_bq_brewery) %>
 </div>
@@ -53,6 +53,19 @@
     </strong>
     <%= link_to @city, "/?search=#{@city}" %>
 </div>
+<br>
+<div>
+        <strong>
+            State with the most Breweries:
+        </strong>
+        <%= link_to @state, "/?search_state=#{@state}" %>
+    </div>
+<br>
+<div><strong>
+    Brewery with most Reviews:
+</strong><%= link_to @most_reviews_brewery.name, brewery_path(@most_reviews_brewery) %></div>
+
+<!-- fast -->
 
 
 

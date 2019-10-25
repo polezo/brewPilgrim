@@ -86,8 +86,24 @@ class Brewery < ApplicationRecord
     end
 
     def self.city_most
-        id = self.group("city").order('count(*) DESC').limit(1).pluck(:city).first
-        
+        id = self.group("city").order('count(*) DESC').limit(1).pluck(:city).first 
+    end
+
+    #Below is sloooooow
+
+    # def self.most_reviews
+    #     self.all.max_by{|brewery| brewery.reviews.length}
+    # end
+
+    #fast version
+
+    def self.most_reviews
+        id = Review.group("reviewee_id").order('count(*) DESC').limit(1).pluck(:reviewee_id).first
+        Brewery.find(id)
+    end
+
+    def self.state_most
+        id = self.group("state").order('count(*) DESC').limit(1).pluck(:state).first 
     end
 
 

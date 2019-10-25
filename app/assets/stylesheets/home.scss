@@ -156,6 +156,10 @@ $second_font : 'Roboto Slab', serif ;
     border:none;
   }
 
+  #hero-logo {
+      max-width: 65%;
+      height:auto;
+  }
 
   .brewQueue_login_button {
     // color: white;
@@ -199,7 +203,7 @@ $second_font : 'Roboto Slab', serif ;
     
     // display:none;
     position: fixed;
-    bottom: 30px;
+    bottom: 50px;
     right: 50px;
     
     button:hover span {display:none}
@@ -446,5 +450,7 @@ LEVEL 1. CORE STYLES
   }
 }
 
-
+.lead {
+    font-size: 1.7em !important;
+}
 

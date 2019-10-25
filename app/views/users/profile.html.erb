@@ -36,8 +36,8 @@
               <ul class="list-group">
               <% current_user.reviews.each do |review| %>
                 <li class="list-group-item">
-                    <span class="rated_stars"><%= review.stars %></span><span class="unrated_stars"><%= review.grey_stars %> - </span><%= link_to review.reviewee.name, brewery_path(review.reviewee) %>
-                -
+                    <strong><%= link_to review.reviewee.name, brewery_path(review.reviewee) %></strong> - <span class="rated_stars"><%= review.stars %></span><span class="unrated_stars"><%= review.grey_stars %> </span> 
+                <br>
                 <%= review.content %></li>
                 <button id="edit_review_profile_button"><%=link_to "Edit or Delete this Review",edit_review_path(review)%></button>
                 <br>
@@ -51,15 +51,17 @@
           <div id="show-brewqueue-profile" class="container">
               <div class="profile-col-headers">
                 <i class="fas fa-list-alt fa-5x"></i>
-                <h2>Brewqueue</h2>
+                <h2>BrewQueue</h2>
               </div>
               <ul class="list-group"
               style="padding-left: 4%">
               <% current_user.brewqueues.each do | brewqueue | %>
                 <li class="list-group-item">
                 <%=link_to brewqueue.brewery.name, brewery_path(brewqueue.brewery)%> - 
-                <%= brewqueue.brewery.city %>, 
-                <%= brewqueue.brewery.state %>
+                <%= brewqueue.brewery.city %>
+                <br> 
+                <%= link_to "Map your Trip to this Brewery", brewqueue.brewery.maps_address %>
+
                  </li>
                  <button id="edit_review_profile_button"><%= link_to "Remove from BrewQueue", brewqueue, method: "DELETE" %></button>
                  <br>

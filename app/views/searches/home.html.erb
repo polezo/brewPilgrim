@@ -6,7 +6,7 @@
 <div id="home">
     <div class="landing-text">
   <% end %>
-  <%= image_tag "BQ_Medium_Fast.png" %>
+  <%= image_tag "BQ_Medium_Fast.png", id:'hero-logo' %>
   <br>
     <h3 class="lead">Plan your pilgrimage to the best taps on the map</h3>
 
@@ -20,8 +20,7 @@
 <%= form_tag brewqueues_path(method: :post) do %>
 <div class="results-container ">
     <!-- Header which is the City -->
-    <% if params[:search] %>
-
+    <% if @search_style %>
     <% @breweries.each do |brewery| %>
       <div id="search-result">
         <h2 id="brewery-name"><%= link_to brewery.name, brewery_path(brewery) %></h2>
