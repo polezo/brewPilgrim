@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:user][:username])
         user = user.try(:authenticate, params[:user][:password])
 
-        return redirect_to(controller: 'sessions', action: 'new') unless user
+        return redirect_to(controller: 'sessions', action: 'new', flash: {"notice": "No user found with the name and password"}) unless user
 
         session[:user_id] = user.id
 

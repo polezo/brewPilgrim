@@ -33,10 +33,9 @@ class UsersController < ApplicationController
          if @user.valid?
             @user.save
             session[:user_id] = @user.id 
-            redirect_to controller: 'searches', action: 'home', 
-               notice: "#{@user.username} created successfully"
+            redirect_to controller: 'searches', action: 'home'
          else
-            redirect_to controller: 'users', action: 'new'
+            render :new
          end
      end
 
