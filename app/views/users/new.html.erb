@@ -3,6 +3,14 @@
         <div class="col">
             <div id="new-user-form-container">
                 <i class="fas fa-user-plus fa-3x"></i>
+
+                <ul>
+                    <% @user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+                 <% end %>
+
                 <h1 id="new-user-header">New User</h1>
 
                 <div class="form-group">
