@@ -80,7 +80,15 @@ class Brewery < ApplicationRecord
         reviewed_breweries = Review.all.map do |review| review.reviewee if review.rating
         end
         rb = reviewed_breweries.uniq
-        best = rb.max_by { |brewery| brewery.average_rating }
+        rb2 = rb.select {|rb| rb unless rb == nil }
+        best = rb2.max_by { |brewery| brewery.average_rating }
         best
     end
+
+    def self.city_most
+        id = self.group("city").order('count(*) DESC').limit(1).pluck(:city).first
+        
+    end
+
+
 end

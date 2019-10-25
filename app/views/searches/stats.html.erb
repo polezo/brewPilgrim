@@ -46,6 +46,13 @@
     </strong>
     <%= link_to @most_bq_brewery.name, brewery_path(@most_bq_brewery) %>
 </div>
+<br>
+<div>
+    <strong>
+        City with the most Breweries:
+    </strong>
+    <%= link_to @city, "/?search=#{@city}" %>
+</div>
 
 
 

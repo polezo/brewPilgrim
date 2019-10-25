@@ -28,7 +28,7 @@
 
             <div>
                 <% if @brewery.reviews.length > 0 %>
-                <strong>Average Rating: </strong><%= pluralize(@brewery.average_rating,'Star') %>
+                <strong>Average Rating: </strong><%= pluralize(@brewery.average_rating.round(2),'Star') %>
                 <% end %>
             </div>
 

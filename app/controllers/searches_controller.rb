@@ -22,7 +22,9 @@ class SearchesController < ApplicationController
         @most_reviews = User.most_reviews
         @alcoholic = User.most_brewqueues
         @best_brewery = Brewery.highest_rated
-        @most_bq_brewery = Brewqueue.most_brewqueues.brewery
+        @most_bq_brewery = Brewery.find(Brewqueue.most_brewqueues)
+        @city = Brewery.city_most
+        
     end
 
 end

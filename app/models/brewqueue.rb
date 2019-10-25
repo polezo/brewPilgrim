@@ -9,8 +9,10 @@ class Brewqueue < ApplicationRecord
     end
 
     def self.most_brewqueues
-        id = self.group(:brewery_id).order('brewery_id DESC').limit(1)
-        id[0]
+        id = self.group("brewery_id").order('count(*) DESC').limit(1).pluck(:brewery_id).first
+        
     end
+
+  
 
 end
