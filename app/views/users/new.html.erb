@@ -1,16 +1,16 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div id="new-user-form-container">
-                <i class="fas fa-user-plus fa-3x"></i>
-
-                <ul>
-                    <% @user.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
+            <div id="new-user-form-container">     
+                <div>
+                <% if @user.errors %>
+                    <% @user.errors.full_messages.each  do |message| %>
+                        <p class="badge badge-danger" style="background: #BD1E1E;"><%= message %></p>
                     <% end %>
-                </ul>
-                 <% end %>
-
+                <% end %>
+                </div>
+                
+                <i class="fas fa-user-plus fa-3x"></i>
                 <h1 id="new-user-header">New User</h1>
 
                 <div class="form-group">
@@ -39,7 +39,7 @@
             <div id="new-user-picture-container">
                 <div id="new-user-text">
                     <h1 id="new-user-header-2">Create A New User</h1>
-                    <h3 id="new-user-lead" class="lead">Sign up to have access to our queue function. Among all the other great features we have avaiable!</h3>
+                    <h3 id="new-user-lead" class="lead">Sign up to have access to our queue functions. Among all the other great features we have avaiable!</h3>
                 </div>
             </div>
         </div>
