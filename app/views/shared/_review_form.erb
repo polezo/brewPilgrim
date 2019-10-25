@@ -3,8 +3,8 @@
 <!-- <%= f.select :rating, (1..5) %></div> -->
 <div class="rating_selection">
 
-<input checked id="review_rating_0" type="radio" value="0" name="review[rating]">
-<label for="review_rating_0">
+    <%= f.radio_button :rating, 0, checked: true %> 
+    <label for="review_rating_0">
 <span>Unrated</span></label> 
 
 <%= f.radio_button :rating, 1 %> 
@@ -38,7 +38,7 @@
 <br>
 <div>
     <br>
-<% if @review.content %>
+<% if @review.id %>
 <%= form_tag review_path, method: "DELETE" do %>
     <%= submit_tag "Delete", class: "btn btn-danger" %>
     <% end %>

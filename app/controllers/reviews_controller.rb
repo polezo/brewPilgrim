@@ -2,8 +2,14 @@ class ReviewsController < ApplicationController
 
     def create
         review = Review.new(review_params)
+        if review.valid?
         review.save
         redirect_to brewery_path(review.reviewee)
+        else
+            @brewery = review.reviewee
+            @review = review
+            render "breweries/show"
+        end
     end
 
     def edit

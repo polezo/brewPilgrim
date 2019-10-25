@@ -46,9 +46,11 @@
                 <% end %>
                 <% end %>
             </ul>
+            <div>See more <%= link_to @brewery.city, "/?search=#{@brewery.city}" %> breweries, or checkout all breweries in <%= link_to @brewery.state, "/?search_state=#{@brewery.state}" %></div>
             </div> <br>
         </div>
     </div>
+  
 
 
     <div id="review-row" class="row" 
@@ -80,6 +82,11 @@
                 <br>
                 <% else %>
             <div><strong>Review this Brewery:</strong><br>
+                <% if @review.errors %>
+                <% @review.errors.full_messages.each  do |message| %>
+                    <p class="badge badge-danger" style="background: #BD1E1E;"><%= message %></p>
+                <% end %>
+            <% end %>
                 <%= render partial: "shared/review_form", locals: {user: current_user, brewery: @brewery } %>
             </div>
             <br>
