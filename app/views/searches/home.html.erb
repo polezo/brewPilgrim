@@ -93,8 +93,15 @@
       </ul>
       </div>
   <% end %>
+  
+  
+  <% if current_user %>
   <div id="bq_button">
-  <%= submit_tag 'Select Breweries to add to BrewQueue', class:"brewQueue_home_button" %>
+    <%= submit_tag '                                           ', class:"brewQueue_home_button" %>
+  <% else %>
+  <div id="bq_button-login">
+   <%= link_to '                               ', login_path, class:"brewQueue_login_button"%> 
+    <% end %>
 </div>
   <% end %>
   <% end %>
