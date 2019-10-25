@@ -2,6 +2,11 @@
     <div class="row">
         <div class="col new-session-from">
             <div id="new-session-form-container">
+                <% if params["flash"] %>
+                    <div class="alert alert-danger" style="text-align: center;">
+                        <%= params["flash"]["notice"] %>
+                    </div>
+                <% end %>
             <h1 id="new-session-main-text">Login</h1>
             <%= form_for @user, url: login_path, method: :post do |f| %>
                 <div class="form-group">
